@@ -9,7 +9,7 @@ import {MessageService} from "./message.service";
 })
 export class EmployeeService {
 
-  private employeeUrl = 'http://localhost:8090/employee'
+  private employeeUrl = '/url/employee'
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -42,11 +42,11 @@ export class EmployeeService {
     );
   }
 
-  public deleteEmployee(id: number): Observable<Employee>{
-    const url = `${this.employeeUrl}/delete`;
+  public deleteEmployee(employee: Employee): Observable<Employee>{
+    const url = `${this.employeeUrl}/delete/${employee.id}`;
 
     return this.http.delete<Employee>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted employee id=${id}`)),
+      tap(_ => this.log(`deleted employee id=${employee.id}`)),
       catchError(this.handleError<Employee>('deleteEmployee'))
     )
   }

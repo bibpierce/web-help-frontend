@@ -5,16 +5,19 @@
         <div class="card-body">
           <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
           <ul class="text-center list-inline py-3">
-            <li class="list-inline-item">
-              <a routerLink="/list" class="btn btn-info">List Employee</a>
-            </li>
-            <li class="list-inline-item">
-              <a routerLink="/create" class="btn btn-info">Create Employee</a>
-            </li>
+
+<!--            <li class="list-inline-item">-->
+<!--              <a routerLink="/list" class="btn btn-info">List Employee</a>-->
+<!--            </li>-->
+<!--            <li class="list-inline-item">-->
+<!--              <a routerLink="/create" class="btn btn-info">Create Employee</a>-->
+<!--            </li>-->
           </ul>
         </div>
       </div>
-      <router-outlet></router-outlet>
+      <app-mui-employee-list></app-mui-employee-list>
+      <app-employee-form></app-employee-form>
+<!--      <router-outlet></router-outlet>-->
     </div>
   </div>
 </div>

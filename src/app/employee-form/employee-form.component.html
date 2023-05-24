@@ -40,7 +40,7 @@
                required #department="ngModel">
         <div [hidden]="!department.pristine" class="alert alert-danger">Department is required</div>
       </div>
-      <button type="sub mit" [disabled]="!employeeForm.form.valid"
+      <button type="submit" [disabled]="!employeeForm.form.valid"
               class="btn btn-info">Submit</button>
     </form>
   </div>

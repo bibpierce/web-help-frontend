@@ -14,6 +14,7 @@ import {MatTableModule} from "@angular/material/table";
 import { MuiEmployeeFormComponent } from './mui-employee-form/mui-employee-form.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -23,16 +24,17 @@ import {MatInputModule} from "@angular/material/input";
     MuiEmployeeListComponent,
     MuiEmployeeFormComponent
   ],
-  imports: [
-    AppRoutingModule,
-    BrowserModule,
-    HttpClientModule,
-    FormsModule,
-    BrowserAnimationsModule,
-    MatTableModule,
-    MatCardModule,
-    MatInputModule
-  ],
+    imports: [
+        AppRoutingModule,
+        BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        BrowserAnimationsModule,
+        MatTableModule,
+        MatCardModule,
+        MatInputModule,
+        MatButtonModule
+    ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]
 })

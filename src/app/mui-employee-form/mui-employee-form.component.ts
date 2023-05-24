@@ -2,8 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {Employee} from "../employee";
 import {ActivatedRoute, Router} from "@angular/router";
 import {EmployeeService} from "../employee.service";
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {EmployeeFormComponent} from "../employee-form/employee-form.component";
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-mui-employee-form',
@@ -16,12 +15,18 @@ export class MuiEmployeeFormComponent {
   employee: Employee
 
   constructor(
+    public dialogRef: MatDialogRef<MuiEmployeeFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Employee,
     public dialog: MatDialog,
     private route: ActivatedRoute,
     private router: Router,
     private employeeService: EmployeeService
   ) {
     this.employee = new Employee();
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
   onSubmit() {
@@ -32,32 +37,7 @@ export class MuiEmployeeFormComponent {
   goToEmployeeList() {
     this.router.navigate(['/url/employee/list'])
   }
-
-  openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      data: {
-        firstName: this.employee.firstName,
-        middleName: this.employee.middleName,
-        lastName: this.employee.lastName,
-        department: this.employee.department}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.employee = result;
-    });
-  }
 }
 
-  export class DialogOverviewExampleDialog {
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: Employee,
-  ) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-}
 
 

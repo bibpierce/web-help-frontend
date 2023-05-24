@@ -1,8 +1,30 @@
-<ol>
-  <li>
-    <button mat-raised-button (click)="openDialog()">Pick one</button>
-  </li>
-  <li *ngIf="animal">
-    You chose: <em>{{animal}}</em>
-  </li>
-</ol>
+<form (ngSubmit)="onSubmit()" #employeeForm="ngForm">
+  <h1 mat-dialog-title>Hi </h1>
+  <div mat-dialog-content>
+    <p>Add New Employee</p>
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="employee.firstName">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="employee.middleName">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="employee.lastName">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="employee.employeeNumber">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput [(ngModel)]="employee.department">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button cdkFocusInitial [disabled]="!employeeForm.form.valid" >Save</button>
+  </div>
+</form>
