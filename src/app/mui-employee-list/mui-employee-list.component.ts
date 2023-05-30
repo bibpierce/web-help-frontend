@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Employee} from "../employee";
 import {EmployeeService} from "../employee.service";
 import {MatTableDataSource} from "@angular/material/table";
+import {MatDialog} from "@angular/material/dialog";
+import {MuiEmployeeFormComponent} from "../mui-employee-form/mui-employee-form.component";
 
 @Component({
   selector: 'app-mui-employee-list',
@@ -10,14 +12,23 @@ import {MatTableDataSource} from "@angular/material/table";
 })
 export class MuiEmployeeListComponent {
 
-  employees : Employee[];
-  displayedColumns: string[] = ['id', 'employeeNumber', 'firstName' , 'middleName', 'lastName', 'department'];
+  employee: Employee;
+  employees: Employee[];
 
-  dataSource : any;
+  displayedColumns: string[] = ['id', 'employeeNumber', 'firstName', 'middleName', 'lastName', 'department', 'actions'];
+  dataSource: any;
 
-  constructor(private employeeService: EmployeeService) {
+  constructor(
+    private dialog: MatDialog,
+    private employeeService: EmployeeService) {
+
   }
+
   ngOnInit() {
+    this.getEmployeeList()
+  }
+
+  getEmployeeList(){
     this.employeeService.getEmployeeList().subscribe(data => {
       this.employees = data;
       this.dataSource = new MatTableDataSource(this.employees)
@@ -25,4 +36,20 @@ export class MuiEmployeeListComponent {
     })
   }
 
+
+  onRowDelete(employee: Employee) {
+    this.employeeService.deleteEmployee(employee).subscribe(_ =>
+      this.ngOnInit());
+  }
+
+  openUpdateEmployeeDialog(employee: Employee) {
+    this.employeeService.getEmployee(employee.id).subscribe(data => {
+        this.employeeService.isCreate = false;
+        this.employee = data;
+        this.dialog.open(MuiEmployeeFormComponent, {
+          data: this.employee
+        })
+      }
+    )
+  }
 }
