@@ -1,8 +1,8 @@
 import {Component, Inject} from '@angular/core';
 import {Employee} from "../employee";
 import {ActivatedRoute, Router} from "@angular/router";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {EmployeeService} from "../employee.service";
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-mui-employee-form',
@@ -10,34 +10,36 @@ import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angula
   styleUrls: ['./mui-employee-form.component.css']
 })
 export class MuiEmployeeFormComponent {
+  employeeDepartments = [
+    { id : 0, value : "IT"},
+    { id : 1, value : "HR"},
+    { id : 2, value : "ADMIN"},
+  ]
 
-
-  employee: Employee
-
+  isCreate = this.employeeService.isCreate;
   constructor(
-    public dialogRef: MatDialogRef<MuiEmployeeFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Employee,
-    public dialog: MatDialog,
+
+    @Inject(MAT_DIALOG_DATA) public employee: Employee,
     private route: ActivatedRoute,
     private router: Router,
+    public dialog: MatDialog,
     private employeeService: EmployeeService
-  ) {
-    this.employee = new Employee();
+  ) {}
+
+  checkLog(){
+    console.log(this.employee)
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  onRowUpdate() {
+    this.employeeService.updateEmployee(this.employee).subscribe(data => {
+      this.employee = data;
+    })
   }
 
-  onSubmit() {
+  onSubmit(){
     this.employeeService.createEmployee(this.employee)
-      .subscribe(result => this.goToEmployeeList())
+      .subscribe(data => console.log(data))
   }
 
-  goToEmployeeList() {
-    this.router.navigate(['/url/employee/list'])
-  }
+
 }
-
-
-

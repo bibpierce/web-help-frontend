@@ -1,30 +1,46 @@
-<form (ngSubmit)="onSubmit()" #employeeForm="ngForm">
-  <h1 mat-dialog-title>Hi </h1>
-  <div mat-dialog-content>
-    <p>Add New Employee</p>
+<h2 mat-dialog-title>New Employee</h2>
+<mat-dialog-content>
+  <li>
+    <mat-form-field>
+      <mat-label>Employee Number</mat-label>
+      <input type="text"
+             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+             matInput [(ngModel)]="employee.employeeNumber">
+    </mat-form-field>
+  </li>
+  <li>
     <mat-form-field>
       <mat-label>First Name</mat-label>
       <input matInput [(ngModel)]="employee.firstName">
     </mat-form-field>
+  </li>
+  <li>
     <mat-form-field>
-      <mat-label>First Name</mat-label>
+      <mat-label>Middle Name</mat-label>
       <input matInput [(ngModel)]="employee.middleName">
     </mat-form-field>
+  </li>
+  <li>
     <mat-form-field>
-      <mat-label>First Name</mat-label>
+      <mat-label>Last Name</mat-label>
       <input matInput [(ngModel)]="employee.lastName">
     </mat-form-field>
+  </li>
+  <li>
+
     <mat-form-field>
-      <mat-label>First Name</mat-label>
-      <input matInput [(ngModel)]="employee.employeeNumber">
+      <mat-label>Select Department</mat-label>
+      <mat-select [(ngModel)]="employee.department">
+        <mat-option *ngFor="let employeeDepartment of employeeDepartments" [value]="employeeDepartment.value">
+          {{employeeDepartment.value}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
-    <mat-form-field>
-      <mat-label>First Name</mat-label>
-      <input matInput [(ngModel)]="employee.department">
-    </mat-form-field>
-  </div>
-  <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">No Thanks</button>
-    <button mat-button cdkFocusInitial [disabled]="!employeeForm.form.valid" >Save</button>
-  </div>
-</form>
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button (click)="isCreate ? onSubmit() : onRowUpdate()" mat-raised-button color="primary">Submit</button>
+      <button (click)="checkLog()" mat-raised-button color="primary">checkLog</button>
+      <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+    </mat-dialog-actions>
