@@ -20,7 +20,8 @@ export class AppComponent {
     middleName : "",
     lastName : "",
     department : "",
-    departmentId: 0
+    departmentId: 0,
+    isChecked:false
   }
 
   public constructor(

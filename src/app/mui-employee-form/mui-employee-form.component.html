@@ -40,7 +40,9 @@
 
     </mat-dialog-content>
     <mat-dialog-actions>
-      <button (click)="isCreate ? onSubmit() : onRowUpdate()" mat-raised-button color="primary">Submit</button>
+      <button (click)="isCreate ? onSubmit() : onRowUpdate()"
+              mat-raised-button color="primary"
+              mat-dialog-close>Submit</button>
       <button (click)="checkLog()" mat-raised-button color="primary">checkLog</button>
       <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
     </mat-dialog-actions>

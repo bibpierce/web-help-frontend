@@ -33,12 +33,17 @@ export class MuiEmployeeFormComponent {
   onRowUpdate() {
     this.employeeService.updateEmployee(this.employee).subscribe(data => {
       this.employee = data;
+      this.goToEmployeeList()
     })
   }
 
   onSubmit(){
     this.employeeService.createEmployee(this.employee)
-      .subscribe(data => console.log(data))
+      .subscribe(data => this.goToEmployeeList())
+  }
+
+  goToEmployeeList(){
+    this.router.navigate(['/url/employee/list'])
   }
 
 

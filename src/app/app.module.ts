@@ -3,7 +3,6 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
 import {EmployeeListComponent} from './employee-list/employee-list.component';
-import {EmployeeFormComponent} from './employee-form/employee-form.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
 import {EmployeeService} from "./employee.service";
@@ -17,18 +16,23 @@ import {MatButtonModule} from "@angular/material/button";
 import {MuiTicketListComponent} from './mui-ticket-list/mui-ticket-list.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatIconModule} from "@angular/material/icon";
-import { MuiEmployeeFormComponent } from './mui-employee-form/mui-employee-form.component';
+import {MuiEmployeeFormComponent} from './mui-employee-form/mui-employee-form.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatSelectModule} from "@angular/material/select";
+import {
+  AssigneeAndWatchersDialogComponent
+} from './assignee-and-watchers-dialog/assignee-and-watchers-dialog.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeListComponent,
-    EmployeeFormComponent,
     MuiEmployeeListComponent,
     MuiTicketListComponent,
-    MuiEmployeeFormComponent
+    MuiEmployeeFormComponent,
+    AssigneeAndWatchersDialogComponent
   ],
   imports: [
     AppRoutingModule,
@@ -43,7 +47,9 @@ import {MatSelectModule} from "@angular/material/select";
     MatDialogModule,
     MatIconModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule,
+    MatFormFieldModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

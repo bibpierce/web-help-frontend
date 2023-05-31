@@ -1,4 +1,4 @@
-export class Employee {
+export interface Employee {
 
     id: any;
     employeeNumber: number;
@@ -7,5 +7,6 @@ export class Employee {
     lastName: string;
     department: string;
     departmentId: number;
+    isChecked: boolean;
 
 }

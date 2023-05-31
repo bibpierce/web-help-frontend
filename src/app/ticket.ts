@@ -1,6 +1,6 @@
 import {Employee} from "./employee";
 
-export class Ticket {
+export interface Ticket {
 
   ticketNumber : number
   title : string
