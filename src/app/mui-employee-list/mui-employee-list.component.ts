@@ -37,7 +37,7 @@ export class MuiEmployeeListComponent {
   }
 
 
-  onRowDelete(employee: Employee) {
+  onRowDeleteEmployee(employee: Employee) {
     this.employeeService.deleteEmployee(employee).subscribe(_ =>
       this.ngOnInit());
   }

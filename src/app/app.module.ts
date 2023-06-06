@@ -24,6 +24,7 @@ import {
 } from './assignee-and-watchers-dialog/assignee-and-watchers-dialog.component';
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { MuiTicketFormComponent } from './mui-ticket-form/mui-ticket-form.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     MuiEmployeeListComponent,
     MuiTicketListComponent,
     MuiEmployeeFormComponent,
-    AssigneeAndWatchersDialogComponent
+    AssigneeAndWatchersDialogComponent,
+    MuiTicketFormComponent
   ],
   imports: [
     AppRoutingModule,

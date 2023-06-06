@@ -3,12 +3,14 @@
 
   <mat-form-field>
     <mat-label>Select Employee</mat-label>
-    <mat-select [(ngModel)]="data.employees.employeeNumber">
-      <mat-option *ngFor="let employee of data.employees" [value]="employee.employeeNumber">
-        {{employee.firstName}} {{employee.lastName}}
+    <mat-select [(ngModel)]="assignedEmployee">
+      <mat-option *ngFor="let employee of employees" [value]="employee">
+        {{ employee.firstName }} {{ employee.lastName }}
       </mat-option>
     </mat-select>
   </mat-form-field>
+
+
 
   <span class="assign-watchers-section">
     <ul>
@@ -25,8 +27,10 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button
+    (click)="handleAssignee(); handleAssignWatchers()"
     mat-raised-button color="primary"
     mat-dialog-close>Submit
   </button>
   <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+  <button (click)="checkLog()" mat-raised-button color="warn" mat-dialog-close>checkLog</button>
 </mat-dialog-actions>

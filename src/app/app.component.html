@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <div class="card bg-dark my-5">
+    <div class="col-md-15">
+      <div class="card bg-dark my-4">
         <div class="card-body">
-          <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
+          <h2 class="card-title text-center text-white py-5">{{ title }}</h2>
           <ul class="text-center list-inline py-3">
             <li class="list-inline-item">
               <button routerLink="/employeeList" mat-raised-button color="primary">Employees</button>
@@ -13,6 +13,9 @@
             </li>
             <li class="list-inline-item">
               <button routerLink="/ticketList" mat-raised-button color="primary">Tickets</button>
+            </li>
+            <li class="list-inline-item">
+              <button (click)="openCreateTicketDialog()" mat-raised-button color="primary">Create Ticket</button>
             </li>
           </ul>
         </div>

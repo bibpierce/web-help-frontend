@@ -22,7 +22,6 @@ export class MuiEmployeeFormComponent {
     @Inject(MAT_DIALOG_DATA) public employee: Employee,
     private route: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog,
     private employeeService: EmployeeService
   ) {}
 

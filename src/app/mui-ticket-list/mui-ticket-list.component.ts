@@ -8,6 +8,8 @@ import {
   AssigneeAndWatchersDialogComponent
 } from "../assignee-and-watchers-dialog/assignee-and-watchers-dialog.component";
 import {Employee} from "../employee";
+import {MuiEmployeeFormComponent} from "../mui-employee-form/mui-employee-form.component";
+import {MuiTicketFormComponent} from "../mui-ticket-form/mui-ticket-form.component";
 
 
 @Component({
@@ -20,7 +22,7 @@ export class MuiTicketListComponent {
   ticket: Ticket;
   tickets: Ticket[];
   employees: Employee[];
-  displayedColumns: string[] = ['ticketNumber', 'title', 'description', 'severity', 'status', 'ticketAssignee', 'ticketWatchers']
+  displayedColumns: string[] = ['ticketNumber', 'title', 'description', 'severity', 'status', 'ticketAssignee', 'ticketWatchers', 'action']
   dataSource: any
 
   constructor(
@@ -36,7 +38,7 @@ export class MuiTicketListComponent {
       this.dialog.open(AssigneeAndWatchersDialogComponent, {
         data: {
           employees: this.employees,
-          tickets: this.tickets
+          ticket: this.ticket
         }
       })
     })
@@ -59,6 +61,23 @@ export class MuiTicketListComponent {
     this.employeeService.getEmployeeList().subscribe(data => {
       this.employees = data;
     })
+  }
+
+  onRowDeleteTicket(ticket : Ticket){
+    this.ticketService.deleteTicket(ticket).subscribe(_ =>
+      this.ngOnInit())
+
+  }
+
+  openUpdateTicketDialog(ticket: Ticket) {
+    this.ticketService.getTicket(ticket.ticketNumber).subscribe(data => {
+        this.ticketService.isCreate = false;
+        this.ticket = data;
+        this.dialog.open(MuiTicketFormComponent, {
+          data: this.ticket
+        })
+      }
+    )
   }
 
 }

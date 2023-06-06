@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Create Ticket Form</h2>
+<mat-dialog-content>
+  <li>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="ticket.title">
+    </mat-form-field>
+  </li>
+  <li>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput [(ngModel)]="ticket.description">
+    </mat-form-field>
+  </li>
+  <li>
+    <mat-form-field>
+      <mat-label>Select Severity</mat-label>
+      <mat-select [(ngModel)]="ticket.severity">
+        <mat-option *ngFor="let ticketSeverity of ticketSeverity" [value]="ticketSeverity.value">
+          {{ticketSeverity.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </li>
+  <li>
+    <mat-form-field>
+      <mat-label>Select Status</mat-label>
+      <mat-select [(ngModel)]="ticket.status">
+        <mat-option *ngFor="let ticketStatus of ticketStatus" [value]="ticketStatus.value">
+          {{ticketStatus.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </li>
+</mat-dialog-content>
+<mat-dialog-actions>
+<button (click)="isCreate ? createTicket() : onRowTicketUpdate()"
+        mat-raised-button color="primary"
+        mat-dialog-close>Submit</button>
+<button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

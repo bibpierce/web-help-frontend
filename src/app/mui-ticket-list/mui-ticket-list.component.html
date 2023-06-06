@@ -2,41 +2,58 @@
 
 
   <ng-container matColumnDef="ticketNumber">
-    <th mat-header-cell *matHeaderCellDef> Ticket No. </th>
+    <th mat-header-cell *matHeaderCellDef> Ticket No.</th>
     <td mat-cell *matCellDef="let ticket"> {{ticket.ticketNumber}} </td>
   </ng-container>
 
   <ng-container matColumnDef="title">
-    <th mat-header-cell *matHeaderCellDef> Title. </th>
+    <th mat-header-cell *matHeaderCellDef> Title.</th>
     <td mat-cell *matCellDef="let ticket"> {{ticket.title}} </td>
   </ng-container>
 
   <ng-container matColumnDef="description">
-    <th mat-header-cell *matHeaderCellDef> Description. </th>
+    <th mat-header-cell *matHeaderCellDef> Description.</th>
     <td mat-cell *matCellDef="let ticket"> {{ticket.description}} </td>
   </ng-container>
 
   <ng-container matColumnDef="severity">
-    <th mat-header-cell *matHeaderCellDef> Severity </th>
+    <th mat-header-cell *matHeaderCellDef> Severity</th>
     <td mat-cell *matCellDef="let ticket"> {{ticket.severity}} </td>
   </ng-container>
 
   <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef> Status. </th>
+    <th mat-header-cell *matHeaderCellDef> Status.</th>
     <td mat-cell *matCellDef="let ticket"> {{ticket.status}} </td>
   </ng-container>
 
   <ng-container matColumnDef="ticketAssignee">
-    <th mat-header-cell *matHeaderCellDef> Employee Number Assigned </th>
-    <td mat-cell *matCellDef="let ticket"> {{ticket.ticketAssignee ? ticket.ticketAssignee.id : 'Unassigned'}} </td>
+    <th mat-header-cell *matHeaderCellDef> Employee Number Assigned</th>
+    <td mat-cell
+        *matCellDef="let ticket"> {{ticket.ticketAssignee ? ticket.ticketAssignee.employeeNumber : 'Unassigned'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="ticketWatchers">
-    <th mat-header-cell *matHeaderCellDef> Ticket Watchers </th>'
-
+    <th mat-header-cell *matHeaderCellDef> Ticket Watchers </th>
     <td mat-cell *matCellDef="let ticket">
-    <button (click)="assigneeAndWatcherDialog(ticket)" mat-raised-button color="basic">Assign Ticket</button>
-    <!-- <td mat-cell *matCellDef="let ticket"> {{ticket.ticketWatchers}} </td> --->
+      <ng-container *ngIf="ticket.ticketWatchers && ticket.ticketWatchers.length > 0; else noWatchers">
+      <span *ngFor="let watcher of ticket.ticketWatchers; let last = last">
+        {{ watcher.employeeNumber }}
+        <span *ngIf="!last">, </span>
+      </span>
+      </ng-container>
+      <ng-template #noWatchers>
+        No Watchers
+      </ng-template>
+    </td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action</th>
+    <td mat-cell *matCellDef="let ticket">
+      <button (click)="openUpdateTicketDialog(ticket)"mat-raised-button color="primary">Update</button>
+      <button (click)="assigneeAndWatcherDialog(ticket)" mat-raised-button color="basic">Assign Ticket</button>
+      <button (click)="onRowDeleteTicket(ticket)" mat-raised-button color="warn">Delete</button>
     </td>
   </ng-container>
 

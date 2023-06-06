@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>New Employee</h2>
+<h2 mat-dialog-title>New Employee Form</h2>
 <mat-dialog-content>
   <li>
     <mat-form-field>
@@ -31,8 +31,8 @@
     <mat-form-field>
       <mat-label>Select Department</mat-label>
       <mat-select [(ngModel)]="employee.department">
-        <mat-option *ngFor="let employeeDepartment of employeeDepartments" [value]="employeeDepartment.value">
-          {{employeeDepartment.value}}
+        <mat-option *ngFor="let employeeDepartment of employeeDepartments" [value]="employeeDepartment">
+          {{employeeDepartment}}
         </mat-option>
       </mat-select>
     </mat-form-field>
