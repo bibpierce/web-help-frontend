@@ -5,7 +5,6 @@ import {Employee} from "./employee";
 import {EmployeeService} from "./employee.service";
 import {Ticket} from "./ticket";
 import {TicketService} from "./ticket.service";
-import {MuiTicketListComponent} from "./mui-ticket-list/mui-ticket-list.component";
 import {MuiTicketFormComponent} from "./mui-ticket-form/mui-ticket-form.component";
 
 @Component({

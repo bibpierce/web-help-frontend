@@ -38,7 +38,7 @@
       <ng-container *ngIf="ticket.ticketWatchers && ticket.ticketWatchers.length > 0; else noWatchers">
       <span *ngFor="let watcher of ticket.ticketWatchers; let last = last">
         {{ watcher.employeeNumber }}
-        <span *ngIf="!last">, </span>
+        <span *ngIf="!last">,</span>
       </span>
       </ng-container>
       <ng-template #noWatchers>
@@ -51,12 +51,21 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef> Action</th>
     <td mat-cell *matCellDef="let ticket">
-      <button (click)="openUpdateTicketDialog(ticket)"mat-raised-button color="primary">Update</button>
-      <button (click)="assigneeAndWatcherDialog(ticket)" mat-raised-button color="basic">Assign Ticket</button>
-      <button (click)="onRowDeleteTicket(ticket)" mat-raised-button color="warn">Delete</button>
+      <button (click)="openUpdateTicketDialog(ticket)"mat-mini-fab color="primary">
+        <i class="material-icons">drive_file_rename_outline</i>
+      </button>
+      <button routerLink="./assignee-and-watchers" (click)="assigneeAndWatcherDialog(ticket)" mat-mini-fab color="primary">
+        <i class="material-icons">manage_accounts</i>
+      </button>
+      <button (click)="onRowDeleteTicket(ticket)" mat-mini-fab color="warn">
+        <i class="material-icons">delete_forever</i>
+      </button>
     </td>
   </ng-container>
+
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+

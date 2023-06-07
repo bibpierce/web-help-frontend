@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Ticket} from "../ticket";
 import {MatDialog} from "@angular/material/dialog";
 import {EmployeeService} from "../employee.service";
@@ -17,7 +17,7 @@ import {MuiTicketFormComponent} from "../mui-ticket-form/mui-ticket-form.compone
   templateUrl: './mui-ticket-list.component.html',
   styleUrls: ['./mui-ticket-list.component.css']
 })
-export class MuiTicketListComponent {
+export class MuiTicketListComponent implements OnInit{
 
   ticket: Ticket;
   tickets: Ticket[];

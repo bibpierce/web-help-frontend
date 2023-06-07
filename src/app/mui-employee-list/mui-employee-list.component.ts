@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Injectable, OnInit} from '@angular/core';
 import {Employee} from "../employee";
 import {EmployeeService} from "../employee.service";
 import {MatTableDataSource} from "@angular/material/table";
@@ -10,7 +10,10 @@ import {MuiEmployeeFormComponent} from "../mui-employee-form/mui-employee-form.c
   templateUrl: './mui-employee-list.component.html',
   styleUrls: ['./mui-employee-list.component.css']
 })
-export class MuiEmployeeListComponent {
+@Injectable({
+  providedIn: 'root',
+})
+export class MuiEmployeeListComponent implements OnInit{
 
   employee: Employee;
   employees: Employee[];

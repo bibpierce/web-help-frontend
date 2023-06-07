@@ -1,27 +1,24 @@
 <h2 mat-dialog-title>Assign Employee and Watchers</h2>
 <mat-dialog-content>
-
-  <mat-form-field>
-    <mat-label>Select Employee</mat-label>
-    <mat-select [(ngModel)]="assignedEmployee">
-      <mat-option *ngFor="let employee of employees" [value]="employee">
-        {{ employee.firstName }} {{ employee.lastName }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-
+  <div>
+    <mat-form-field>
+      <mat-label>Select Employee</mat-label>
+      <mat-select [(ngModel)]="assignedEmployee">
+        <mat-option *ngFor="let employee of employees" [value]="employee">
+          {{ employee.firstName }} {{ employee.lastName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 
   <span class="assign-watchers-section">
-    <ul>
       <mat-label>Assign Watchers</mat-label>
-    <li *ngFor="let employee of employees">
+    <div *ngFor="let employee of tempEmployees">
       <mat-checkbox [(ngModel)]="employee.isChecked"
                     (ngModelChange)="updateAllChecked()">
         {{employee.firstName}} {{employee.lastName}}
       </mat-checkbox>
-    </li>
-  </ul>
+    </div>
   </span>
 
 </mat-dialog-content>
@@ -31,6 +28,6 @@
     mat-raised-button color="primary"
     mat-dialog-close>Submit
   </button>
-  <button mat-raised-button color="warn" mat-dialog-close>Cancel</button>
+  <button (click)="goBack()" mat-raised-button color="warn" mat-dialog-close>Cancel</button>
   <button (click)="checkLog()" mat-raised-button color="warn" mat-dialog-close>checkLog</button>
 </mat-dialog-actions>

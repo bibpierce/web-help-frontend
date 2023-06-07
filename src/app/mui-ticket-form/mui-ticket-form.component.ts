@@ -47,7 +47,9 @@ export class MuiTicketFormComponent {
   }
 
   goToEmployeeList(){
-    this.router.navigate(['/url/ticket/list'])
+    this.router.navigate(['/', 'ticket-list'])
   }
+
+
 
 }

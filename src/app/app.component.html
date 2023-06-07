@@ -1,26 +1,24 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-15">
-      <div class="card bg-dark my-4">
-        <div class="card-body">
-          <h2 class="card-title text-center text-white py-5">{{ title }}</h2>
-          <ul class="text-center list-inline py-3">
+
+<div class="card">
+    <mat-card-header>
+      <div class="card bg-dark my-12">
+          <h2 class="card-title text-center text-white py-4">{{ title }}</h2>
+          <ul class="text-center list-inline py-10">
             <li class="list-inline-item">
-              <button routerLink="/employeeList" mat-raised-button color="primary">Employees</button>
+              <button routerLink="/employee-list" mat-raised-button color="primary">Employees</button>
             </li>
             <li class="list-inline-item">
               <button (click)="openCreateEmployeeDialog()" mat-raised-button color="primary">Add Employee</button>
             </li>
             <li class="list-inline-item">
-              <button routerLink="/ticketList" mat-raised-button color="primary">Tickets</button>
+              <button routerLink="/ticket-list" mat-raised-button color="primary">Tickets</button>
             </li>
             <li class="list-inline-item">
               <button (click)="openCreateTicketDialog()" mat-raised-button color="primary">Create Ticket</button>
             </li>
           </ul>
-        </div>
       </div>
-      <router-outlet></router-outlet>
-    </div>
-  </div>
+    </mat-card-header>
+  <mat-card-content><router-outlet></router-outlet></mat-card-content>
 </div>
+
